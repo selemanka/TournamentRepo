@@ -1,0 +1,29 @@
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
+        <aura:handler name="init" action="{!c.getTournamentsList}" value="{!this}" />
+        <aura:attribute name="tournamentList" type="List" />         
+            <div class= "container slds-p-top--medium">
+            <div id="list" class= "row">
+                <table  class="slds-table slds-table--bordered slds-table--striped">
+                     <thead>
+                        <tr>
+                            <th scope="col"><span class="slds-text-heading--medium">Name</span></th>
+                            <th scope="col"><span class="slds-text-heading--medium">Status</span></th>
+                            <th scope="col"><span class="slds-text-heading--medium">Type</span></th>
+                            <th scope="col"><span class="slds-text-heading--medium">Date</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <aura:iteration items="{!v.tournamentList}" var="tournament">
+                               <tr>
+                                 <td>{!tournament.Name}</td>
+                                 <td>{!tournament.Status__c}</td>
+                                 <td>{!tournament.Type__c}</td>
+                                 <td>{!tournament.Date__c}</td>
+                               </tr>
+                
+                        </aura:iteration>
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+</aura:component>
