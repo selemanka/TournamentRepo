@@ -1,6 +1,8 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
         <aura:handler name="init" action="{!c.getTournamentsList}" value="{!this}" />
+  	    <aura:handler name="init" action="{!c.filter}" value="{!this}" />
         <aura:attribute name="tournamentList" type="List" />  
+   	    <aura:attribute name="filteredDataList" type="Tournament__c[]" />  
    		<aura:attribute name="Name" type="String" />
     	<aura:attribute name="Status" type="String" />
         <aura:attribute name="Type" type="String" />
@@ -14,7 +16,7 @@
                 <lightning:input label="Type"
                                  value="{!v.Type}"/> 
                 <lightning:input label="Date"
-                                 value="{!v.Date}"/>              
+                                 value="{!v.Date}"/>   
                 <lightning:button label="Find" 
                                   class="slds-m-top--medium"
                                   variant="brand"
