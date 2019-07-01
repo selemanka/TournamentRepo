@@ -10,13 +10,19 @@ public class TournamentsController {
         name = name +'%';
         status = status +'%';
         type = type +'%';
-        List<Tournament__c> tournamentList;
+        List<Tournament__c> filteredDataList;
         if(daate != null){
-            tournamentList = new List<Tournament__c>([SELECT  Name, Status__c, Type__c,Date__c FROM Tournament__c WHERE Name LIKE :name AND Status__c LIKE :status AND Type__c  LIKE :type AND Date__c  = :daate]);        
+            filteredDataList = new List<Tournament__c>([SELECT  Name, Status__c, Type__c,Date__c FROM Tournament__c WHERE Name LIKE :name AND Status__c LIKE :status AND Type__c  LIKE :type AND Date__c  = :daate]);        
         }
         else{
-            tournamentList = new List<Tournament__c>([SELECT  Name, Status__c, Type__c,Date__c FROM Tournament__c WHERE Name LIKE :name AND Status__c LIKE :status AND Type__c  LIKE :type]);          
+            filteredDataList = new List<Tournament__c>([SELECT  Name, Status__c, Type__c,Date__c FROM Tournament__c WHERE Name LIKE :name AND Status__c LIKE :status AND Type__c  LIKE :type]);          
         }
-        return tournamentList;
+        return filteredDataList;
     }
+    @AuraEnabled
+    public static List<Player__c> getPlayers(){
+         List<Player__c> playerList = new List<Player__c>([SELECT Id,First_Name__c, LastName__c, PlayerEmail__c FROM Player__c]);
+         return playerList;
+    } 
+    
 }
