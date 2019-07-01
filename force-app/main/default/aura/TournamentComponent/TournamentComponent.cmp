@@ -1,6 +1,26 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
         <aura:handler name="init" action="{!c.getTournamentsList}" value="{!this}" />
-        <aura:attribute name="tournamentList" type="List" />         
+        <aura:attribute name="tournamentList" type="List" />  
+   		<aura:attribute name="Name" type="String" />
+    	<aura:attribute name="Status" type="String" />
+        <aura:attribute name="Type" type="String" />
+        <aura:attribute name="Date" type="Date" />
+    
+            <form class="slds-form--stacked">          
+                <lightning:input label="Name"
+                                 value="{!v.Name}"/> 
+                <lightning:input label="Status"
+                                 value="{!v.Status}"/> 
+                <lightning:input label="Type"
+                                 value="{!v.Type}"/> 
+                <lightning:input label="Date"
+                                 value="{!v.Date}"/>              
+                <lightning:button label="Find" 
+                                  class="slds-m-top--medium"
+                                  variant="brand"
+                                  onclick="{!c.filter}"/>
+            </form>
+   
             <div class= "container slds-p-top--medium">
             <div id="list" class= "row">
                 <table  class="slds-table slds-table--bordered slds-table--striped">
@@ -25,5 +45,5 @@
                     </tbody>
                 </table>
             </div>
-        </div>    
+        </div>       
 </aura:component>

@@ -1,5 +1,5 @@
 ({    
-        getTournamentsList : function(component, event, helper) {
+      getTournamentsList : function(component, event, helper) {
           var action = component.get("c.getTournaments");  
        	  action.setCallback(this, function(response) {
             var state = response.getState();
@@ -12,6 +12,9 @@
             }
         });
         $A.enqueueAction(action);
-        }
-
+       },
+    
+    filter : function(component, event, helper){
+        console.log(component.get("v.Name"));
+    }
 })
