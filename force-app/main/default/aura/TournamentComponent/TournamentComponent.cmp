@@ -1,32 +1,44 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
      
     	<aura:handler name="init" action="{!c.getTournamentsList}" value="{!this}" />
-   		<aura:handler name="init" action="{!c.getPlayersList}" value="{!this}" />
   	    <aura:handler name="init" action="{!c.filter}" value="{!this}" />
-        <aura:attribute name="tournamentList" type="List" />  
-    	<aura:attribute name="playerList" type="List" />
+        <aura:attribute name="tournamentList" type="List" />      	
    	    <aura:attribute name="filteredDataList" type="Tournament__c[]" />  
-   		<aura:attribute name="Name" type="String" />
-    	<aura:attribute name="Status" type="String" />
-        <aura:attribute name="Type" type="String" />
+   		<aura:attribute name="Name" type="String" default=""/>
+    	<aura:attribute name="Status" type="String" default="" />
+        <aura:attribute name="Type" type="String" default="" />
         <aura:attribute name="Date" type="Date" />
-		<lightning:tabset>
-            <lightning:tab label="Tournaments">
-                <form class="slds-form--stacked">          
-                    <lightning:input label="Name"
-                                     value="{!v.Name}"/> 
-                    <lightning:input label="Status"
-                                     value="{!v.Status}"/> 
-                    <lightning:input label="Type"
-                                     value="{!v.Type}"/> 
-                    <lightning:input label="Date"
-                                     value="{!v.Date}"/>   
-                    <lightning:button label="Find" 
-                                      class="slds-m-top--medium"
-                                      variant="brand"
-                                      onclick="{!c.filter}"/>
+    
+                <form class="slds-form--inline ">  
+                    <div class="slds-align_absolute-center">
+                        <lightning:input label="Name"
+                                         value="{!v.Name}"/> 
+                        <lightning:input label="Status"
+                                         value="{!v.Status}"/> 
+                        <lightning:input label="Type"
+                                         value="{!v.Type}"/> 
+                        <lightning:input label="Date"
+                                         value="{!v.Date}" type="date"/>   
+                    </div>
+                    <div class="slds-grid slds-wrap">
+ 						 <div class="slds-col slds-size_1-of-2 slds-align_absolute-center">
+                            <lightning:button label="Find" 
+                                              class="slds-m-top--medium"
+                                              variant="brand"
+                                              onclick="{!c.filter}"/>
+                            <lightning:button label="Clear all" 
+                                              class="slds-m-top--medium"
+                                              variant="brand"
+                                              onclick="{!c.clear}"/>
+                          </div>
+                    </div>
                 </form>
-       
+        			<div class="slds-grid slds-wrap">
+ 						 <div class="slds-col slds-size_1-of-2 slds-align_absolute-center ">
+       						<c:CreateTournament/>
+                         </div>
+                    </div>
+    
                 <div class= "container slds-p-top--medium">
                 <div id="list" class= "row">
                     <table  class="slds-table slds-table--bordered slds-table--striped">
@@ -51,33 +63,6 @@
                         </tbody>
                     </table>
                 </div>
-              </div> 
-			</lightning:tab>
-            
-            <lightning:tab label="Players">
-            	<div class= "container slds-p-top--medium">
-                <div id="list" class= "row">
-                    <table  class="slds-table slds-table--bordered slds-table--striped">
-                         <thead>
-                            <tr>
-                                <th scope="col"><span class="slds-text-heading--medium">First Name</span></th>
-                                <th scope="col"><span class="slds-text-heading--medium">Last Name</span></th>
-                                <th scope="col"><span class="slds-text-heading--medium">Email</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <aura:iteration items="{!v.playerList}" var="player">
-                                   <tr>
-                                     <td>{!player.First_Name__c}</td>
-                                     <td>{!player.LastName__c}</td>
-                                     <td>{!player.PlayerEmail__c}</td>
-                                   </tr>
-                    
-                            </aura:iteration>
-                        </tbody>
-                    </table>
-                </div>
-              </div> 
-        	</lightning:tab>
-		</lightning:tabset>
+              </div>     
+        
 </aura:component>

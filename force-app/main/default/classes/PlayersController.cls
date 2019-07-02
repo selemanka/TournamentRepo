@@ -6,7 +6,6 @@ public class PlayersController {
     } 
     @AuraEnabled
     public static List<Player__c> filterData(String first_name, String last_name, String email){
-        system.debug(first_name + '--->' + last_name + '--->' + email);
         first_name= first_name +'%';
         last_name= last_name +'%';
         email= email +'%';

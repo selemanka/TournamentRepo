@@ -1,3 +1,11 @@
 <aura:application extends="force:slds">
-	<c:TournamentComponent/>
+    <lightning:tabset>
+        <lightning:tab label="Tournaments">            
+                <c:TournamentComponent/> 
+         </lightning:tab>
+         <lightning:tab label="Players">
+                <c:PlayerComponent/>
+          </lightning:tab>
+		</lightning:tabset>
+    <!--<c:CreateTournament />-->
 </aura:application>
