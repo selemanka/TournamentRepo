@@ -2,9 +2,11 @@
 	<aura:attribute name="tournament" type="Tournament__c" default="{'sObjectType':'Tournament__c'}"/>
     <aura:attribute name="isModalOpen" type="boolean" default="false"/>
     <aura:attribute name="disabled" type="Boolean" default="false" />
-     
+    <aura:registerEvent name="pushTournament" type="c:TournamentEvent"/> 
+    
     <div class="slds-m-around_xx-large">
-        <lightning:button variant="brand"
+        <lightning:button class="slds-button_success"
+                          variant="brand"
                           label="Create"
                           title="Create"
                           onclick="{! c.openModel }" />       
@@ -30,13 +32,14 @@
                                 <lightning:inputField fieldName="Status__c" />
                                 <lightning:inputField fieldName="Type__c" />
                                 <lightning:inputField fieldName="Date__c" />
+                                
                                 <footer class="slds-modal__footer">                                    
                                         <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Create"/>
                                         <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }"/>                                     
                                 </footer>
+                                
                             </lightning:recordEditForm>
-                        </div>
-                      
+                        </div>                      
                     </div>
             	</section>
             	<div class="slds-backdrop slds-backdrop_open"></div>

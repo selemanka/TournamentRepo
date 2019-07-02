@@ -6,6 +6,5 @@
          <lightning:tab label="Players">
                 <c:PlayerComponent/>
           </lightning:tab>
-		</lightning:tabset>
-    <!--<c:CreateTournament />-->
+	</lightning:tabset>
 </aura:application>

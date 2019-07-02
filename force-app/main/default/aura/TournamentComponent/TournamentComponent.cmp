@@ -1,9 +1,9 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
      
-    	<aura:handler name="init" action="{!c.getTournamentsList}" value="{!this}" />
+        <aura:handler name="pushTournament" event="c:TournamentEvent" action="{!c.handleCreateTournament}"/>
+    	
   	    <aura:handler name="init" action="{!c.filter}" value="{!this}" />
-        <aura:attribute name="tournamentList" type="List" />      	
-   	    <aura:attribute name="filteredDataList" type="Tournament__c[]" />  
+        <aura:attribute name="tournamentList" type="Tournament__c[]" />      	
    		<aura:attribute name="Name" type="String" default=""/>
     	<aura:attribute name="Status" type="String" default="" />
         <aura:attribute name="Type" type="String" default="" />
@@ -13,22 +13,30 @@
                     <div class="slds-align_absolute-center">
                         <lightning:input label="Name"
                                          value="{!v.Name}"/> 
-                        <lightning:input label="Status"
-                                         value="{!v.Status}"/> 
-                        <lightning:input label="Type"
-                                         value="{!v.Type}"/> 
+                        
+                        <lightning:select label="Status" value="{!v.Status}">
+                            <option value="">choose status...</option>
+                            <option value="Upcoming">Upcoming</option>
+                            <option value="Current">Current</option>
+                            <option value="Completed">Completed</option>
+    					</lightning:select>    
+                        
+                        <lightning:select label="Type" value="{!v.Type}">
+                            <option value="">choose type...</option>
+                            <option value="Single Elimination">Single Elimination</option>
+                            <option value="Round Robin">Round Robin</option>
+    					</lightning:select>
                         <lightning:input label="Date"
                                          value="{!v.Date}" type="date"/>   
                     </div>
                     <div class="slds-grid slds-wrap">
  						 <div class="slds-col slds-size_1-of-2 slds-align_absolute-center">
                             <lightning:button label="Find" 
-                                              class="slds-m-top--medium"
+                                              class="slds-m-top--medium "
                                               variant="brand"
                                               onclick="{!c.filter}"/>
                             <lightning:button label="Clear all" 
-                                              class="slds-m-top--medium"
-                                              variant="brand"
+                                              class="slds-m-top--medium slds-button_outline-brand"
                                               onclick="{!c.clear}"/>
                           </div>
                     </div>

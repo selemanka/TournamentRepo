@@ -23,8 +23,7 @@
                                                   variant="brand"
                                                   onclick="{!c.filter}"/>
                                 <lightning:button label="Clear all" 
-                                                  class="slds-m-top--medium"
-                                                  variant="brand"
+                                                  class="slds-m-top--medium slds-button_outline-brand"
                                                   onclick="{!c.clear}"/>
                                  </div>
                         </div>
