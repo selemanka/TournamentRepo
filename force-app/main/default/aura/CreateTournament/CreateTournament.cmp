@@ -1,0 +1,45 @@
+<aura:component implements="flexipage:availableForRecordHome" controller="TournamentsController" access="global" >
+	<aura:attribute name="tournament" type="Tournament__c" default="{'sObjectType':'Tournament__c'}"/>
+    <aura:attribute name="isModalOpen" type="boolean" default="false"/>
+    <aura:attribute name="disabled" type="Boolean" default="false" />
+     
+    <div class="slds-m-around_xx-large">
+        <lightning:button variant="brand"
+                          label="Create"
+                          title="Create"
+                          onclick="{! c.openModel }" />       
+            <aura:if isTrue="{!v.isModalOpen}">
+                <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+                        
+                        <header class="slds-modal__header">
+                            <lightning:buttonIcon iconName="utility:close"
+                                                  onclick="{! c.closeModel }"
+                                                  alternativeText="close"
+                                                  variant="bare-inverse"
+                                                  class="slds-modal__close"/>
+                            <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">Create new tournament</h2>
+                        </header>
+                        
+                        <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                            <lightning:recordEditForm 
+                                onsuccess="{!c.handleSubmit}"
+                                objectApiName="Tournament__c" >
+                                <lightning:messages/>
+                                <lightning:inputField fieldName="Name" />
+                                <lightning:inputField fieldName="Status__c" />
+                                <lightning:inputField fieldName="Type__c" />
+                                <lightning:inputField fieldName="Date__c" />
+                                <footer class="slds-modal__footer">                                    
+                                        <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Create"/>
+                                        <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }"/>                                     
+                                </footer>
+                            </lightning:recordEditForm>
+                        </div>
+                      
+                    </div>
+            	</section>
+            	<div class="slds-backdrop slds-backdrop_open"></div>
+            </aura:if>
+	</div>
+</aura:component>
