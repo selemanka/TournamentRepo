@@ -4,7 +4,17 @@ public class PlayersController {
          List<Player__c> playerList = new List<Player__c>([SELECT Id,First_Name__c, LastName__c, PlayerEmail__c FROM Player__c]);
          return playerList;
     } 
-    
+    @AuraEnabled
+    public static List<Player__c> getPlayersWhoDontParticipateInTournament(Id tournamentId){
+        List<Player__c> playerList = [SELECT Id,(SELECT Name, Tournament__r.Name FROM Participations__r WHERE Tournament__r.Id =:tournamentId) FROM Player__c];
+        List<Player__c> playerNotInTournamentList = new List<Player__c>();
+        for(Player__c p : playerList){
+            if(p.Participations__r.size() == 0){
+                playerNotInTournamentList.add(p);
+            }
+        }
+        return playerNotInTournamentList;
+    }
     @AuraEnabled
     public static List<Player__c> filterData(String first_name, String last_name, String email){
         first_name= first_name +'%';
