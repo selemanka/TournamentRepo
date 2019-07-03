@@ -34,7 +34,7 @@
                                 <lightning:inputField fieldName="Date__c" />
                                 
                                 <footer class="slds-modal__footer">                                    
-                                        <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Create"/>
+                                        <lightning:button disabled="{!v.disabled}" variant="brand" type="submit" name="save" label="Save"/>
                                         <lightning:button variant="neutral" label="Cancel" title="Cancel" onclick="{! c.closeModel }"/>                                     
                                 </footer>
                                 

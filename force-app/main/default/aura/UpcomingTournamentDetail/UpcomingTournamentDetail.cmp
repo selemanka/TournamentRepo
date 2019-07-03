@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome" controller="PlayersController" access="global">
+	<aura:handler name="init" action="{!c.displayPlayers}" value="{!this}" />
+    <aura:attribute name="playerList" type="Player__c[]" /> 
+</aura:component>

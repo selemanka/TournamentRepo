@@ -1,5 +1,5 @@
-public class TournamentsController {
-    
+public class TournamentsController {    
+   
     @AuraEnabled
     public static List<Tournament__c> filterData(String name, String status, String type, Date daate){
         name = name +'%';

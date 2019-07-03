@@ -1,0 +1,4 @@
+<aura:component implements="flexipage:availableForRecordHome" controller="GamesController" access="global">
+	<aura:handler name="init" action="{!c.displayGames}" value="{!this}" />
+    <aura:attribute name="gameList" type="Game__c[]" /> 
+</aura:component>

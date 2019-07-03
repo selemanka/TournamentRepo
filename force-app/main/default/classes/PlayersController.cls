@@ -1,9 +1,10 @@
 public class PlayersController {
-   @AuraEnabled
+    @AuraEnabled
     public static List<Player__c> getPlayers(){
          List<Player__c> playerList = new List<Player__c>([SELECT Id,First_Name__c, LastName__c, PlayerEmail__c FROM Player__c]);
          return playerList;
     } 
+    
     @AuraEnabled
     public static List<Player__c> filterData(String first_name, String last_name, String email){
         first_name= first_name +'%';

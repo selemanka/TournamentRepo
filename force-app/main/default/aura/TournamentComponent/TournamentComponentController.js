@@ -24,11 +24,23 @@
         component.set("v.Date", null);
     },
     handleCreateTournament : function(component, event, helper){
-        console.log('-->');
         var newTournament = event.getParam("tournament");
         console.log(JSON.stringify(newTournament));
         var tournamentList = component.get("v.tournamentList");
         tournamentList.push(newTournament);
         component.set("v.tournamentList", tournamentList);
-    }
+    },
+    openModel : function(component, event, helper){
+        component.set("v.isModalOpen", true);
+        console.log(event.currentTarget);
+        var index = parseInt(event.currentTarget.dataset.index);
+        console.log(component.get("v.tournamentList")[index]);
+        component.set("v.tournament", component.get("v.tournamentList")[index]);       
+       
+    },
+   
+    handleCloseDetail: function(component, event, helper){
+        component.set("v.isModalOpen", false); 
+        component.set("v.tournament", null);
+    }    
 })

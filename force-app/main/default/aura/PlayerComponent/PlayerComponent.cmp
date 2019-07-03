@@ -1,6 +1,6 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="PlayersController" access="global" >
-	<aura:handler name="init" action="{!c.getPlayersList}" value="{!this}" />  
-    <aura:attribute name="playerList" type="List" />
+	<aura:handler name="init" action="{!c.filter}" value="{!this}" />
+    <aura:attribute name="playerList" type="Player__c[]"/>
     <aura:attribute name="filteredDataList" type="Player__c[]" />  
     <aura:attribute name="firstName" type="String" default="" />
    	<aura:attribute name="lastName" type="String" default="" />

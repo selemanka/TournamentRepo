@@ -1,9 +1,13 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId" controller="TournamentsController" access="global" >
+<aura:component implements="flexipage:availableForRecordHome" controller="TournamentsController" access="global" >
      
         <aura:handler name="pushTournament" event="c:TournamentEvent" action="{!c.handleCreateTournament}"/>
-    	
+    	<aura:handler name="closeDetail" event="c:TournamentDetailsEvent" action="{!c.handleCloseDetail}"/>
+   
+    	<aura:attribute name="isModalOpen" type="boolean" default="false"/>	        
+    	<aura:attribute name="playerList" type="Player__c[]"/>
+    	<aura:attribute name="tournament" type="Tournament__c"/>
   	    <aura:handler name="init" action="{!c.filter}" value="{!this}" />
-        <aura:attribute name="tournamentList" type="Tournament__c[]" />      	
+        <aura:attribute name="tournamentList" type="Tournament__c[]" />  
    		<aura:attribute name="Name" type="String" default=""/>
     	<aura:attribute name="Status" type="String" default="" />
         <aura:attribute name="Type" type="String" default="" />
@@ -59,18 +63,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <aura:iteration items="{!v.tournamentList}" var="tournament">
-                                   <tr>
+                            <aura:iteration items="{!v.tournamentList}" var="tournament" indexVar="index">
+                                   <tr onclick="{! c.openModel }" data-index="{!index}">
+                                      
                                      <td>{!tournament.Name}</td>
                                      <td>{!tournament.Status__c}</td>
                                      <td>{!tournament.Type__c}</td>
-                                     <td>{!tournament.Date__c}</td>
-                                   </tr>
-                    
+                                     <td>{!tournament.Date__c}</td>    
+                                                                    				
+                                   </tr>    
+                                     <div>
+                                        <aura:if isTrue="{!v.isModalOpen}">
+                                            <c:TournamentDetail tournament="{!v.tournament}"/>
+                                        </aura:if>
+                                    </div>                    
                             </aura:iteration>
                         </tbody>
                     </table>
                 </div>
-              </div>     
-        
+            </div>             
 </aura:component>
