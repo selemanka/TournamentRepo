@@ -1,5 +1,51 @@
 <aura:component implements="flexipage:availableForRecordHome" controller="PlayersController" access="global">
 	<aura:handler name="init" action="{!c.displayPlayers}" value="{!this}" />
     <aura:attribute name="playerList" type="Player__c[]" /> 
-    <aura:attribute name="tournament" type="Tournament__c" />
+    <aura:attribute name="selectedList" type="Player__c[]" />
+    <aura:attribute name="tournament" type="Tournament__c" />    
+    <aura:attribute name="tournamentId" type="Id"/>
+    <aura:attribute name="player" type="Player__c"/>
+    <!--<aura:attribute name="chkboxvalue" type="boolean"/>-->
+    
+     <div id="list" class= "row">
+                    <table  class="slds-table slds-table--bordered slds-table--striped">
+                         <thead>
+                            <tr>
+                                <th scope="col"><span class="slds-text-heading--medium">Participation</span></th>
+                                <th scope="col"><span class="slds-text-heading--medium">Name</span></th>
+                                <th scope="col"><span class="slds-text-heading--medium">Surname</span></th>
+                            </tr>
+                         </thead>
+                         <tbody>
+                            <aura:iteration items="{!v.playerList}" var="player" indexVar="index">
+                                   <tr>
+                                      
+                                     <td> <lightning:input type="toggle"                                                            
+                                                           value="{!player.selected}"
+                                                           class="slds-p-around--small"                                     
+                                                           messageToggleActive="Yes"
+                                                           messageToggleInactive="No"
+                                                           onchange="{!c.selectPlayersToParticipate}"
+                                                           data-index="{!index}"/>	
+                                         <!--<p><b>Toggle value is {!v.chkboxvalue} </b></p>-->
+                                     </td>
+                                       
+                                     <td>{!player.First_Name__c}</td>
+                                     <td>{!player.LastName__c}</td>
+                                       
+                                   </tr>     
+                                
+                            </aura:iteration>     
+                        </tbody>
+                    </table>
+    </div>
+
+    <div class="slds-clearfix">
+      <div class="slds-float_right">
+            <lightning:button variant="success"
+                              label="Submit"
+                              title="Submit"
+                              onclick="{! c.submitPlayers }"/>
+      </div>
+    </div>
 </aura:component>

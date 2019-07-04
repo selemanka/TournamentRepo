@@ -6,7 +6,7 @@ Map<Id,Tournament__c> tournamentList = new Map<Id,Tournament__c>([SELECT Id, Sta
         if(newTournament.Status__c != oldTournament.Status__c && oldTournament.Status__c =='Upcoming' && newTournament.Status__c =='Current'){
             Game__c game = new Game__c();
             
-            //game.Tournament__c.Name = newTournament.Name;
+            //game.Tournament__c.Participations__r.Player__r.First_Name__c
         }
 	}
 }

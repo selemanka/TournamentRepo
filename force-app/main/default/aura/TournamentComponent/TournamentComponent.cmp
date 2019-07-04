@@ -72,12 +72,13 @@
                                      <td>{!tournament.Date__c}</td>    
                                                                     				
                                    </tr>    
-                                     <div>
-                                        <aura:if isTrue="{!v.isModalOpen}">
-                                            <c:TournamentDetail tournament="{!v.tournament}"/>
-                                        </aura:if>
-                                    </div>                    
+                                                         
                             </aura:iteration>
+                            <div>
+                                <aura:if isTrue="{!v.isModalOpen}">
+                                    <c:TournamentDetail tournament="{!v.tournament}"/>
+                                </aura:if>
+                            </div>
                         </tbody>
                     </table>
                 </div>

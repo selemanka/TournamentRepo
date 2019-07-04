@@ -19,21 +19,22 @@
                 
                 
                     	<aura:if isTrue="{!or(v.tournament.Status__c == 'Current',v.tournament.Status__c == 'Completed')}"> 
-                                <c:CurrentOrCompletedTournamentDetail tournament ="{!v.tournament}" />  
-                            <aura:set attribute="else">
-                                <c:UpcomingTournamentDetail tournament ="{!v.tournament}"/>
-                            </aura:set>
+                            
+                            <c:CurrentOrCompletedTournamentDetail tournament ="{!v.tournament}" />
+                            
   						</aura:if> 
-                
+                        <aura:if isTrue="{!v.tournament.Status__c == 'Upcoming'}">
+                            
+                            <c:UpcomingTournamentDetail tournament ="{!v.tournament}" tournamentId="{!v.tournament.Id}"/>
+                            
+                        </aura:if> 
             </div>
             
-            <footer class="slds-modal__footer">
-                
+            <footer class="slds-modal__footer">                
                 <lightning:button variant="neutral"
                                   label="Cancel"
                                   title="Cancel"
-                                  onclick="{! c.closeModel }"/>
-                
+                                  onclick="{! c.closeModel }"/>                                
             </footer>
         </div>
     </section>

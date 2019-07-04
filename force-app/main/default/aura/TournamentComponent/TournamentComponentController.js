@@ -32,7 +32,8 @@
     },
     openModel : function(component, event, helper){
         component.set("v.isModalOpen", true);
-        console.log(event.currentTarget);
+        //console.log(event.currentTarget);
+        //console.log('open modal')
         var index = parseInt(event.currentTarget.dataset.index);
         console.log(component.get("v.tournamentList")[index]);
         component.set("v.tournament", component.get("v.tournamentList")[index]);       
