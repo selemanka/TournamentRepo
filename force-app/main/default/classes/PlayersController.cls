@@ -17,17 +17,20 @@ public class PlayersController {
         return playerNotInTournamentList;
     }
     
-    @AuraEnabled
-    public static List<Player__c> insertSelectedPlayers(Id tournamentId, List<Player__c> selectedList){
-        List<Player__c> playerList = new List<Player__c>([SELECT Id,First_Name__c, LastName__c FROM Player__c /*WHERE Tournament__r.Id =:tournamentId*/]);
-        List<Player__c> selectedPlayerList = new List<Player__c>();
-        
-        for(Player__c p : playerList){
-            
-            selectedPlayerList.add(p);
+ @AuraEnabled
+    public static List<Participation__c> applyPlayersForTheTournament(Id tournamentId, List<Player__c> selectedPlayers){
+       System.debug('tournament: ' + tournamentId);
+       System.debug('selectedPlayers: ' + selectedPlayers);
+       List<Participation__c> participationList = new List<Participation__c>();
+        for(Player__c pl : selectedPlayers){
+            Participation__c participation = new Participation__c();
+            participation.Name = '1';
+            participation.Tournament__c = tournamentId;
+            participation.Player__c = pl.Id;
+            participationList.add(participation);
         }
-        insert selectedPlayerList;
-        return selectedPlayerList;
+       insert participationList;
+       return null;
     }
     
     @AuraEnabled

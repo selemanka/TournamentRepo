@@ -1,10 +1,8 @@
 <aura:component implements="flexipage:availableForRecordHome" controller="PlayersController" access="global">
 	<aura:handler name="init" action="{!c.displayPlayers}" value="{!this}" />
     <aura:attribute name="playerList" type="Player__c[]" /> 
-    <aura:attribute name="selectedList" type="Player__c[]" />
     <aura:attribute name="tournament" type="Tournament__c" />    
     <aura:attribute name="tournamentId" type="Id"/>
-    <aura:attribute name="player" type="Player__c"/>
     <!--<aura:attribute name="chkboxvalue" type="boolean"/>-->
     
      <div id="list" class= "row">
@@ -20,14 +18,13 @@
                             <aura:iteration items="{!v.playerList}" var="player" indexVar="index">
                                    <tr>
                                       
-                                     <td> <lightning:input type="toggle"                                                            
-                                                           value="{!player.selected}"
-                                                           class="slds-p-around--small"                                     
-                                                           messageToggleActive="Yes"
-                                                           messageToggleInactive="No"
-                                                           onchange="{!c.selectPlayersToParticipate}"
-                                                           data-index="{!index}"/>	
-                                         <!--<p><b>Toggle value is {!v.chkboxvalue} </b></p>-->
+                                     <td> 
+                                         
+                                         <lightning:select label="Apply" value="{!player.selected}">
+                                            <option value="no">No</option>
+                                            <option value="yes">Yes</option>
+                                        </lightning:select>                                         
+                                         
                                      </td>
                                        
                                      <td>{!player.First_Name__c}</td>
