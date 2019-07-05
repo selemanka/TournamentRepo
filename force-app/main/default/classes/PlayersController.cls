@@ -32,7 +32,7 @@ public class PlayersController {
        insert participationList;
        return null;
     }
-    
+     
     @AuraEnabled
     public static List<Player__c> filterData(String first_name, String last_name, String email){
         first_name= first_name +'%';

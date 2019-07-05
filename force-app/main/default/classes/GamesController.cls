@@ -10,4 +10,5 @@ public class GamesController {
         List<Game__c> gamesRelatedToTournamentList = [SELECT Name, Tournament__r.Id FROM Game__c WHERE Tournament__r.Id = :tournamentId];
         return gamesRelatedToTournamentList;
     }
+    
 }
