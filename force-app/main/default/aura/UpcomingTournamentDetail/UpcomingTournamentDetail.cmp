@@ -3,7 +3,6 @@
     <aura:attribute name="playerList" type="Player__c[]" /> 
     <aura:attribute name="tournament" type="Tournament__c" />    
     <aura:attribute name="tournamentId" type="Id"/>
-    <!--<aura:attribute name="chkboxvalue" type="boolean"/>-->
     
      <div id="list" class= "row">
                     <table  class="slds-table slds-table--bordered slds-table--striped">

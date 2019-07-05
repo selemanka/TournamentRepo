@@ -13,6 +13,7 @@ public class TournamentTriggerHandler {
         }
         insert gameList;
     } 
+    
     public static List<Game__c> generateRoundRobinGames(Tournament__c tournament){
         List<Game__c> gameList = new List<Game__c>();
         
@@ -21,7 +22,7 @@ public class TournamentTriggerHandler {
                 if(i != j){
                     Game__c game = new Game__c();
                     game.Tournament__c = tournament.Id;
-                    game.Name = 'name';
+                    game.Name = 'game';
                     game.Player1__c = tournament.Participations__r.get(i).Player__c;
                     game.Player__c = tournament.Participations__r.get(j).Player__c;
                     gameList.add(game);
@@ -30,6 +31,11 @@ public class TournamentTriggerHandler {
         }
         
         return gameList;
+    }
+    
+    
+    public static List<Game__c> getGames(Tournament__c tournament){
+    	return [SELECT Id FROM Game__c WHERE Tournament__c =: tournament.Id];
     }
     
      public static List<Game__c> generateSingleEliminationGames(Tournament__c tournament){
