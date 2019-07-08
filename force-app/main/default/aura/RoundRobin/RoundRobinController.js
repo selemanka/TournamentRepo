@@ -1,5 +1,6 @@
 ({
-	displayRoundRobinGamesGrid : function(component, event, helper) {
+	displayRoundRobinGamesGrid : function(component, event, helper) {        
+		 
 		console.log('t:'+component.get("v.tournament").Name);
         var action = component.get("c.displayRoundRobinGames");
         action.setParams({

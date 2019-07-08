@@ -21,10 +21,10 @@
         component.set("v.lastName", '');
         component.set("v.Email", '');
     },
- 	/*openModel : function(component, event, helper){
+ 	openModel : function(component, event, helper){
          component.set("v.isModalOpen", true);
          var index = parseInt(event.currentTarget.dataset.index);
          console.log(component.get("v.playerList")[index]);
          component.set("v.player", component.get("v.playerList")[index]);   
-     }    */
+     }    
 })

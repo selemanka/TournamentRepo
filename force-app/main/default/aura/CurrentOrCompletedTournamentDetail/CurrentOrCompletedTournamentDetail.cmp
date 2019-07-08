@@ -5,7 +5,7 @@
                 
                     	<aura:if isTrue="{!v.tournament.Type__c == 'Round Robin'}"> 
                             
-                            <c:RoundRobin tournament ="{!v.tournament}" />
+                            <c:RoundRobin tournament ="{!v.tournament}" tournamentId="{!v.tournament.Id}"/>
                             
   						</aura:if> 
                         <aura:if isTrue="{!v.tournament.Type__c == 'Single Elimination'}">

@@ -5,6 +5,6 @@
          </lightning:tab>
          <lightning:tab label="Players">
                 <c:PlayerComponent/>
-          </lightning:tab>
+         </lightning:tab>
 	</lightning:tabset>
 </aura:application>
