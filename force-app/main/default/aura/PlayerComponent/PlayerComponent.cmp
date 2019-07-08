@@ -1,7 +1,7 @@
 <aura:component implements="flexipage:availableForRecordHome" controller="PlayersController" access="global" >
 	<aura:handler name="init" action="{!c.filter}" value="{!this}" />
     <aura:attribute name="playerList" type="Player__c[]"/>
-    <aura:attribute name="filteredDataList" type="Player__c[]" />  
+    <aura:attribute name="player" type="Player__c"/>
     <aura:attribute name="firstName" type="String" default="" />
    	<aura:attribute name="lastName" type="String" default="" />
     <aura:attribute name="Email" type="String" default="" />
@@ -40,8 +40,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <aura:iteration items="{!v.playerList}" var="player">
-                                       <tr>
+                                <aura:iteration items="{!v.playerList}" var="player" indexVar="index">
+                                       <tr onclick="{! c.openModel }" data-index="{!index}">
                                          <td>{!player.First_Name__c}</td>
                                          <td>{!player.LastName__c}</td>
                                          <td>{!player.PlayerEmail__c}</td>
@@ -49,6 +49,9 @@
                         
                                 </aura:iteration>
                             </tbody>
+                            <aura:if isTrue="{!v.isModalOpen}">
+                            	<c:PlayerDetail player="{!v.player}"/>
+                            </aura:if>
                         </table>
                     </div>
                   </div>                 

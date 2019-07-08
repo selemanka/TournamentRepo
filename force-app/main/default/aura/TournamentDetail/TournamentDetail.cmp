@@ -28,7 +28,8 @@
                             <c:UpcomingTournamentDetail tournament ="{!v.tournament}" tournamentId="{!v.tournament.Id}"/>
                             
                         </aura:if> 
-            </div>
+            </div>           
+            
             
             <footer class="slds-modal__footer">                
                 <lightning:button variant="neutral"

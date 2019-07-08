@@ -32,11 +32,14 @@
             if(state === 'SUCCESS') {
 				var selectedList = response.getReturnValue();                
 				component.set("v.selectedList",response.getReturnValue());
+                component.set("v.isModalOpen", false); 
+        		component.set("v.tournament", null);
              }
             else {
 				alert('Error');
             }
         });
+        
         $A.enqueueAction(action);
     } 
 })

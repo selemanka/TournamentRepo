@@ -1,4 +1,18 @@
 <aura:component implements="flexipage:availableForRecordHome" controller="GamesController" access="global">
     <aura:attribute name="tournament" type="Tournament__c" />
-    <c:RoundRobin tournament ="{!v.tournament}"/>
+    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                
+                
+                    	<aura:if isTrue="{!v.tournament.Type__c == 'Round Robin'}"> 
+                            
+                            <c:RoundRobin tournament ="{!v.tournament}" />
+                            
+  						</aura:if> 
+                        <aura:if isTrue="{!v.tournament.Type__c == 'Single Elimination'}">
+                            
+                            <c:SingleElimination tournament ="{!v.tournament}"/>
+                            
+                        </aura:if> 
+            </div>
+    
 </aura:component>
