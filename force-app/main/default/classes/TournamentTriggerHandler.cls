@@ -26,7 +26,8 @@ public class TournamentTriggerHandler {
                     game.Player1__c = tournament.Participations__r.get(i).Player__c;
                     game.Player__c = tournament.Participations__r.get(j).Player__c;
                     gameList.add(game);
-                }                
+                }
+                
             }
         }
         

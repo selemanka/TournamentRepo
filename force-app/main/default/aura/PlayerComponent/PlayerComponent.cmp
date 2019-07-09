@@ -6,6 +6,8 @@
    	<aura:attribute name="lastName" type="String" default="" />
     <aura:attribute name="Email" type="String" default="" />
     <aura:attribute name="Type" type="String" default="" /> 
+    <aura:attribute name="isModalOpen" type="Boolean" default="" /> 
+    
     
                 <form class="slds-form--inline ">  
                         <div class="slds-align_absolute-center">       
@@ -49,10 +51,11 @@
                         
                                 </aura:iteration>
                             </tbody>
-                            <aura:if isTrue="{!v.isModalOpen}">
-                            	<c:PlayerDetail player="{!v.player}"/>
-                            </aura:if>
                         </table>
                     </div>
-                  </div>                 
+                  </div>  		
+        <aura:if isTrue="{!v.isModalOpen}">
+                                   
+            <c:PlayerDetail player="{!v.player}"/>
+        </aura:if>
 </aura:component>

@@ -5,24 +5,33 @@
     <aura:attribute name="tournamentId" type="Id" />   
   
    <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered"> 
-           
-    <tbody>        
-        <aura:iteration items="{!v.gamesList}" var="game">
-              <aura:iteration items="{!game}" var="item">                  
-                                    
-                  <tr>                         
-                    	<div class="slds-truncate">
-                            <td>                                
-                                {!item.Player__r.First_Name__c} <br/> 
-                                {!item.Player1__r.First_Name__c} <br/>
-                            </td>
+               
+        <tbody>        
+            <aura:iteration items="{!v.gamesList}" var="game" indexVar="i">
+                
+                <tr> 
+                  	<aura:iteration items="{!game}" var="item" indexVar="j">                  
+                                  
+                          <aura:if isTrue="{!i == j}">
+        
+                                  <td style="background-color:RGBA(252 , 192 , 103, 0.7)">NO GAME</td>
+                          </aura:if>  
+                        
+                        <td style="background-color:RGBA(24, 131, 117, 0.5)">  
                             
-                        </div>                         
-                   </tr> 
-    
-            </aura:iteration>
-        </aura:iteration>
-  </tbody>
-</table>
+                            {!item.Player__r.First_Name__c}  1: {!item.FirstPlayerScore__c} <br/> 
+                            {!item.Player1__r.First_Name__c}  2: {!item.SecondPlayerScore__c } <br/>                                          
+                        </td>
+                               
+                                              
+                	</aura:iteration>
+                    <aura:if isTrue="{!i == v.gamesList.length - 1}">
+        
+                                  <td style="background-color:RGBA(252 , 192 , 103, 0.7)">NO GAME</td>
+                          </aura:if>  
+                </tr> 
+             </aura:iteration>
+     	 </tbody>
+    </table>
    
 </aura:component>
